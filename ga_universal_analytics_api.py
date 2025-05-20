@@ -8,11 +8,13 @@ import pandas as pd
 from apiclient.discovery import build
 from oauth2client.service_account import ServiceAccountCredentials
 from datetime import date
+import logging
 from config import (
     SCOPES,
-    DIMENSIONS, METRICS, VIEW_IDS
+    DIMENSIONS,
+    METRICS,
+    VIEW_IDS
 )
-import logging
 
 BASE_DIR = Path.cwd()
 CREDENTIALS_FILE = BASE_DIR / 'credentials' / 'client_secrets.json'
@@ -142,7 +144,7 @@ class GoogleAnalyticsClient:
             logger.error(f"Failed to fetch report for view ID {view_id}: {str(e)}")
             raise
 
-def process_report_data(report):
+def process_report_data(df):
     """
     Process the report data into a pandas DataFrame.
 
@@ -153,33 +155,30 @@ def process_report_data(report):
         pd.DataFrame: Processed data
     """
     try:
-        # Get headers
-        column_header = report.get('columnHeader', {})
-        metric_headers = column_header.get('metricHeader', {}).get('metricHeaderEntries', [])
-        dimension_headers = column_header.get('dimensions', [])
-
-        # Combine headers
-        headers = dimension_headers + [m['name'] for m in metric_headers]
-
-        # Process rows
-        rows = report.get('data', {}).get('rows', [])
-        data = []
-
-        for row in rows:
-            row_data = row.get('dimensions', [])
-            metrics = row.get('metrics', [])
-            row_data.extend(metrics[0]['values'])
-            data.append(row_data)
-
-        # Create DataFrame
-        df = pd.DataFrame(data, columns=headers)
-
         df['ga:date'] = pd.to_datetime(df['ga:date'])
 
-        # Convert numeric columns
-        numeric_columns = [col for col in df.columns if col.startswith('ga:') and col != 'ga:date']
-        for col in numeric_columns:
-            df[col] = pd.to_numeric(df[col], errors='coerce')
+        column_types = {
+            'ga:users': 'int',
+            'ga:newUsers': 'int',
+            'ga:sessions': 'int',
+            'ga:transactions': 'int',
+            'ga:transactionRevenue': 'float',
+            'ga:conversionRate': 'float',
+            'ga:bounceRate': 'float',
+            'ga:avgSessionDuration': 'float',
+            'ga:pageviewsPerSession': 'float'
+        }
+
+        for col, dtype in column_types.items():
+            if col in df.columns:
+                try:
+                    df[col] = pd.to_numeric(df[col], errors='coerce')
+                    df[col] = df[col].astype(dtype)
+                    logger.info(f"Successfully converted {col} to {dtype}")
+                except Exception as e:
+                    logger.warning(f"Failed to convert {col} to {dtype}: {str(e)}")
+
+        df.columns = [col.replace('ga:', '') for col in df.columns]
 
         logger.info(f"Successfully processed {len(df)} rows of data")
         return df
