@@ -1,0 +1,21 @@
+ga_date,utm_source,utm_medium,utm_campaign,channel_grouping,users,new_users,sessions,transactions,transaction_revenue,conversion_rate,bounce_rate,avg_session_duration,page_views_per_session
+2020-05-18 00:00:00,(direct),(none),(not set),Direct,3,2,3,0,0.0,0.0,33.33333333333333,40.0,2.0
+2020-05-18 00:00:00,Company,Refer,(not set),(Other),2,0,2,0,0.0,0.0,0.0,46.5,5.0
+2020-05-18 00:00:00,Company,Refer a Friend,Always On,(Other),1,1,1,0,0.0,0.0,0.0,69.0,1.0
+2020-05-18 00:00:00,Company,Refer a Friend,Always On,(Other),1,1,1,0,0.0,0.0,0.0,28.0,1.0
+2020-05-18 00:00:00,flocktory,workflow_email,275589,(Other),1,0,1,0,0.0,0.0,0.0,75.0,2.0
+2020-05-18 00:00:00,google,cpc,SEM // Exact // Brand,Paid Search,8,3,8,0,0.0,0.0,12.5,410.0,2.625
+2020-05-18 00:00:00,google,cpc,SEM // Exact // Generic // Product,Paid Search,1,0,1,0,0.0,0.0,0.0,163.0,1.0
+2020-05-18 00:00:00,google,cpc,Shopping - España - Inteligente,Paid Search,1,1,1,0,0.0,0.0,0.0,0.0,2.0
+2020-05-18 00:00:00,google,organic,(not set),Organic Search,8,6,8,0,0.0,0.0,12.5,628.0,2.0
+2020-05-18 00:00:00,Instagram,IG Bio,Peonies,(Other),1,1,1,0,0.0,0.0,0.0,41.0,2.0
+2020-05-18 00:00:00,Instagram,IG Stories,Rainbow Roses,(Other),3,1,3,0,0.0,0.0,0.0,63.333333333333336,0.6666666666666666
+2020-05-18 00:00:00,Social Ads,Social Campaigns,*1* *F* *AON* *0*,(Other),2,2,2,0,0.0,0.0,0.0,78.0,2.5
+2020-05-18 00:00:00,Social Ads,Social Campaigns,*1* *U* *AON* *0*,(Other),2,2,2,0,0.0,0.0,0.0,81.0,2.5
+2020-05-18 00:00:00,Social Ads,Social Campaigns,*2* *U* *AON* *7*,(Other),1,1,1,0,0.0,0.0,0.0,7.0,1.0
+2020-05-18 00:01:00,(direct),(none),(not set),Direct,2,1,1,0,0.0,0.0,0.0,140.0,3.0
+2020-05-18 00:01:00,app_add_reminder,(not set),(not set),(Other),1,0,1,0,0.0,0.0,0.0,102.0,1.0
+2020-05-18 00:01:00,awin,Affiliation,366705,(Other),1,1,1,0,0.0,0.0,0.0,14.0,2.0
+2020-05-18 00:01:00,Company,Refer,(not set),(Other),1,0,0,0,0.0,0.0,0.0,0.0,0.0
+2020-05-18 00:01:00,Company,Refer a Friend,Always On,(Other),2,0,1,0,0.0,0.0,0.0,1221.0,3.0
+2020-05-18 00:01:00,search.yahoo.com,referral,(not set),Referral,1,1,1,0,0.0,0.0,0.0,55.0,2.0

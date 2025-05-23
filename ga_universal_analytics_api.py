@@ -18,13 +18,14 @@ from config import (
 
 BASE_DIR = Path.cwd()
 CREDENTIALS_FILE = BASE_DIR / 'credentials' / 'client_secrets.json'
-OUTPUT_DIR = BASE_DIR / 'output'
+DATA_DIR = BASE_DIR / 'data'
+LOGS_DIR = BASE_DIR / 'logs'
 
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler(OUTPUT_DIR / 'analytics.log'),
+        logging.FileHandler(LOGS_DIR / 'analytics.log'),
         logging.StreamHandler()
     ]
 )
@@ -195,7 +196,7 @@ def save_data(df, country):
         country (str): Country code for the file name
     """
     try:
-        country_dir = OUTPUT_DIR / country
+        country_dir = DATA_DIR
         country_dir.mkdir(exist_ok=True)
 
         date = df['ga:date'].iloc[0]
